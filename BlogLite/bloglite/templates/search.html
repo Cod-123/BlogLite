@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <h3 align="center">Search users to follow and unfollow them!</h3>
+    
+    <form method="POST">
+
+      <input type="text" name="field"  id="topic" class="form-control">
+      <br>
+     
+      <div align="center">
+        <button type="submit" class="btn btn-lg btn-primary">Search</button>
+      </div>
+    </form>
+    <br />
+    <div align="center">
+      <a href="/home"
+        ><button type="button" class="btn btn-lg btn-secondary">Go to Home page</button></a
+      >
+    </div>
+    {% endblock %}

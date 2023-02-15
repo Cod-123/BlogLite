@@ -1,0 +1,135 @@
+
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %} 
+{% block content %}
+
+    <div class="container align-items-center my-5">
+     <h2 class="text-center">Profile Details</h2>
+     <div class="container my-5 ">
+     <div class="card text-center" >
+      <div class="card-body bg-light">
+
+      
+        <div class="card-text">Username : {{ uname.username }}</div>
+        <hr>
+        <div class="card-text"> Email : {{ uname.email }}</div>
+        <hr>
+        <div class="card-text"> No. of posts : {{ posts_count }}</div>
+        <hr>
+        <div class="card-text"> No.of followers : {{ followers_count }}</div>
+        <hr>
+        <div class="card-text"> No.of people following : {{ following_count }}</div>
+    
+    
+     </div>
+    </div>
+    </div>
+    </div>
+    <div class="container">
+    <h2 class="text-center">List of followers :</h2>
+
+    {% if followers|length == 0 %}
+    <h5 class="text-center">None</h5>
+    {% endif %}
+
+    {% for follower in followers %}
+    <div class="container my-5">
+    <div class="card text-center" >
+      <div class="card-body bg-light">
+        <div class="card-text">{{ follower.followers }}</div>
+    </div>
+    <hr>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+    
+    <div class="container ">
+        <h2 class="text-center"> List of followings:</h2>
+
+        {% if followings|length == 0 %}
+        <h5 class="text-center">None</h2>
+        {% endif %}
+
+        {% for following in followings %}
+        <div class="container my-5">
+        <div class="card text-center" >
+          <div class="card-body bg-light">
+            <div class="card-text">{{ following.following }}</div>
+            <hr>
+        
+    </div>
+    <hr>
+        
+        
+    </div>
+     </div>
+        {% endfor %}
+    </div>
+    
+    <div class="container">
+    <h2 class="text-center">My posts</h2>
+    {% for post in posts %}
+    <div class="container my-5">
+    <div class="card text-center" >
+        <div class="btn-group">
+            <!-- <button
+              type="button"
+              class="btn btn-sm btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+            ></button> -->
+            <ul >
+              <!-- <li>
+                <a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a>
+              </li> -->
+
+              <li>
+                <a href="/delete-post/{{post.id}}" class="dropdown-item">
+                  <button type="button" class="btn btn-danger btn-sm">
+                    Delete
+                  </button>
+                </a>
+              </li>
+
+              <!-- <li>
+                <a href="/updatepost/{{post.id}}" class="dropdown-item">Update</a>
+              </li> -->
+
+              <a href="/updatepost/{{post.id}}" class="dropdown-item">
+                <button type="button" class="btn btn-info btn-sm">
+                 Update
+                </button>
+              </a>
+            </ul>
+        </div>
+        <div class="card-body bg-light">
+         <div class="card-title"> Title : {{ post.topic }}</div>
+         <hr>
+         <div class="card-text"> Content : {{ post.text }}</div>
+         <hr>
+         {% if post.image != None %}
+         <div class="card-text">Image : <img src="{{ post.image }}" class="img-fluid" alt="imageforblog"></div>
+         <hr>
+         {% endif %}
+
+         <p class="card-text">Posted at: {{ post.date_created }}</p>
+       </div>
+    </div>
+
+    
+    
+    </div>
+    {% endfor %}
+    {% block footer %}
+    <div align="center">
+      <a href="/newpost"
+        ><button type="button" class="btn btn-primary btn-lg">
+          Create a Post
+        </button></a
+      >
+    </div>
+    {% endblock %}
+
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <h1 align="center">Add a new Post!</h1>
+    
+    <form method="POST">
+
+      <label for="topic">Title : </label><br><br>
+      <input type="text" name="topic"  id="topic" class="form-control">
+      <br>
+      <label for="text">Content: </label><br><br>
+      <textarea name="text" id="text" class="form-control"></textarea>
+      <br />
+      <label for="topic">Image : </label><br><br>
+      <input type="text" name="img"  id="img" class="form-control">
+      <br>
+      <div align="center">
+        <button type="submit" class="btn btn-lg btn-primary">Post</button>
+      </div>
+    </form>
+    <br />
+    <div align="center">
+      <a href="/home"
+        ><button type="button" class="btn btn-lg btn-warning">Go to Home page</button></a
+      >
+    </div>
+    {% endblock %}

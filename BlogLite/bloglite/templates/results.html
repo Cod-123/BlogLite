@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Search Results{% endblock %} 
+{% block content %}
+ 
+
+<!-- {% with message = get_flashed_messages() %}
+{% if message %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  {{ message[0] }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% endwith %} -->
+
+<div>
+    <h4>Results</h4>
+    {% if users|length == 0 %}
+    <h2 class="text-center">No users found</h2>
+    {% endif %}
+    {% for user in users %}
+    <div class="container my-5 ">
+    <div class="card text-center" >
+      <div class="card-body bg-light">
+        <h4 class="card-title">{{ user.username }}</h4>
+        <p class="card-text">{{ user.email }}</p>
+        <p class="card-text">{{ user.date_created }}</p>
+      </div>
+      {% if user.username in following %}
+      <form action="{{ url_for('views.unfollow', username=user.username) }}" method="POST">
+      <button type="submit" class="btn btn-warning">Unfollow</button>
+      </form>
+      {% else %}
+      <form action="{{ url_for('views.follow', username=user.username) }}" method="POST">
+      <button type="submit" class="btn btn-primary">Follow</button>
+      </form>
+      {% endif %}
+    </div>
+    </div>
+
+    
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+

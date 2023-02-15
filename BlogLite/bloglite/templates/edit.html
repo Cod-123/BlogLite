@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}EditBlog{% endblock %} {% block content
+  %}
+  <h1 align="center">Edit post details!</h1>
+  
+  <form action="/updatepost/{{post.id}}" method="POST">
+
+    <label for="topic">Title : </label><br><br>
+    <input type="text"  value="{{post.topic}}" name="topic"  id="topic" class="form-control">
+    <br>
+    <label for="text">Content: </label><br><br>
+    <textarea name="text" id="text" class="form-control"> {{post.text}}  </textarea>
+    <br>
+    <label for="topic">Image : </label><br><br>
+    <input type="text"  value="{{post.image}}" name="img"  id="img" class="form-control">
+    <br>
+    <div align="center">
+      <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+    </div>
+  </form>
+  <br />
+  <div align="center">
+    <a href="/home"
+      ><button type="button" class="btn btn-lg btn-secondary">Go to Home page</button></a
+    >
+  </div>
+  {% endblock %}
